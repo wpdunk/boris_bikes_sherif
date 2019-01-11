@@ -21,13 +21,13 @@ describe DockingStation do
   describe ' #dock' do
     it "docks something" do
       bike = Bike.new
-      expect(subject.dock(bike)).to eq bike
+      subject.dock(bike)
+      expect(subject.dock(bike)).to eq subject.instance_variable_get(:@bikes).pop
     end
 
     it 'raises an error when the docking station is full' do
       bike = Bike.new
-      subject.dock(bike)
-      expect { subject.dock(bike) }.to raise_error 'Capacity full'
+      expect { 21.times { subject.dock(bike) } }.to raise_error 'Capacity full'
     end
   end
 
@@ -35,7 +35,7 @@ describe DockingStation do
     it "return bike" do
       bike = Bike.new
       subject.dock(bike)
-      expect(subject.bike).to eq bike
+      expect(subject.release_bike).to eq bike
     end
 
     it "raises an eror when no bikes" do
