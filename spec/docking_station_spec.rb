@@ -27,7 +27,7 @@ describe DockingStation do
 
     it 'raises an error when the docking station is full' do
       bike = Bike.new
-      docks = DockingStation::DEFAULT_CAPACITY + 1
+      docks = subject.instance_variable_get(:@capacity) + 1
       expect { (docks).times { subject.dock(bike) } }.to raise_error 'Capacity full'
     end
   end
@@ -61,4 +61,12 @@ describe DockingStation do
   # it "fails if #empty? returns true" do
   #   expect(subject.empty?).to eq true
   # end
+
+  it "creation of new station can take an argument specifying capacity" do
+    expect(subject.capacity).to eq subject.instance_variable_get(:@capacity)
+  end
+
+  it "check that default capacity is 20" do
+    expect(subject.capacity).to eq 20
+  end
 end
