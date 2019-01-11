@@ -43,4 +43,21 @@ describe DockingStation do
     end
   end
 
+  # it "responds to full? method" do
+  #  is_expected.to respond_to(:full?)
+  # end
+  #
+  # it "fails if #full? returns true" do
+  #   bike = Bike.new
+  #   20.times { subject.dock(bike) }
+  #   expect(subject.full?).to eq true
+  # end
+  # 
+  # it "responds to empty? method" do
+  #  is_expected.to respond_to(:empty?)
+  # end
+  #
+  # it "fails if #empty? returns true" do
+  #   expect(subject.empty?).to eq true
+  # end
 end
