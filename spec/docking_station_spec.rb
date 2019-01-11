@@ -69,4 +69,15 @@ describe DockingStation do
   it "check that default capacity is 20" do
     expect(subject.capacity).to eq 20
   end
+
+  it "user can report bike is broken when docking" do
+    is_expected.to respond_to(:dock).with(2)
+    # expect(subject).to receive(:dock).with(2)
+  end
+
+  it "bike marked as broken" do
+    initial_capacity = subject.capacity
+    subject.dock(Bike.new, false)
+    expect(subject.capacity).to eq (initial_capacity - 1)
+  end
 end
